@@ -124,10 +124,15 @@ export default class MoviesDAO {
     */
 
     const searchGenre = Array.isArray(genre) ? genre : genre.split(", ")
+    console.log("searchGenre", searchGenre)
 
-    // TODO Ticket: Text and Subfield Search
+    // TODO: Text and Subfield Search
     // Construct a query that will search for the chosen genre.
-    const query = {}
+    const query = {
+      genres: {
+        $in: searchGenre,
+      },
+    }
     const project = {}
     const sort = DEFAULT_SORT
 
